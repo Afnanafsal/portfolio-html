@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-ziPBOoMWTJihAFQsGm/HStzcj++2d6tLO+FP5+N/dD6uT+EtpdzUn18V0l0+OM+D" crossorigin="anonymous">
+
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Header */
+  header {
+    background-color: transparent; /* Make the background transparent */
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5em;
+    margin: 0;
+  }
+
+  .logo img {
+    height: 50px; /* Adjust height as needed */
+    width: auto; /* Ensure image width adjusts proportionally */
+  }
+
+  /* Navigation */
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  nav ul li {
+    margin-right: 20px;
+  }
+
+  nav ul li a {
+    color: #6CB9EF; /* Blue color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: #ffa500; /* Orange accent on hover */
+  }
+
+  /* Hero Section */
+  .hero {
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #4285f4; /* Blue color */
+  }
+
+  .hero-heading {
+    font-size: 4rem; /* Increased font size */
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif; /* Font family changed */
+  }
+
+  .hero-subheading {
+    font-size: 2rem; /* Increased font size */
+    margin-bottom: 2rem;
+  }
+
+  .hero-button {
+    background-color: #4285f4; /* Blue color */
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+  }
+
+  .hero-button:hover {
+  background-color: #083a8c; /* Blue color */
+;
+  }
+
+  .hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the content */
+    padding: 0 20px; /* Add padding */
+  }
+
+  .hero-text {
+    flex: 1;
+    padding-right: 20px; /* Adjust spacing */
+  }
+
+  .hero-image {
+    flex: 1;
+    text-align: center; /* Center the image horizontally */
+  }
+
+  .hero-image img {
+    max-width: 50%;
+    max-height: 100%;
+    border-radius: 100%; /* Display image as a circle */
+  }
+  .social-icons {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color:#09429f;
+    width: 100%;
+  }
+
+  .social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #4285f4; /* Blue color */
+    font-size: 24px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+
+.social-icons a img {
+  width: 24px; /* Adjust the size as needed */
+  height: 24px; 
+  color:#09429f;/* Adjust the size as needed */
+}
+
+  .social-icons a:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Sections */
+  section {
+    padding: 50px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the content */
+  }
+
+  section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #4285f4; /* Blue color */
+  }
+
+  /* About Section */
+  .about p {
+    font-size: 1.2em;
+    line-height: 1.6;
+  }
+
+  /* Skills Section */
+  .skills ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allow skills to wrap to the next line */
+    justify-content: center; /* Center the skills */
+  }
+
+  .skills ul li {
+    flex: 0 0 20%; /* Each skill occupies 20% of the container */
+    margin: 10px; /* Adjust spacing between skills */
+    background-color: #4285f4; /* Blue color */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  /* Works Section */
+  .works .project {
+    display: inline-block;
+    width: calc(30% - 40px);
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .works h2 {
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #4285f4; /* Blue color */
+  }
+  .works .project:hover {
+    transform: translateY(-5px);
+  }
+
+  .works .project img {
+    width: 100%;
+    height: 200px;
+  }
+
+  /* Contact Section */
+  .contact form input,
+  .contact form textarea,
+  .contact form button {
+    width: calc(100% - 400px);
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .contact form button {
+    background-color: #4285f4; /* Blue color */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .contact form button:hover {
+    background-color: #09429f; /* Blue color */
+  }
+
+  /* Footer */
+  footer {
+    background-color: #4285f4; /* Blue color */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+  .logo h2, ul {
+    color: #4285f4;
+    font-family: poppins;
+  }
+
+    @media screen and (max-width: 1024px) {
+      .hero-content {
+        flex-direction: column;
+      }
+      .hero-text, .hero-image {
+        width: 100%; /* Full width on smaller screens */
+      }
+      .skills ul li {
+        flex: 0 0 45%; /* Two skills per row on smaller screens */
+      }
+    }
+      /* Media Queries */
+  @media (max-width: 768px) {
+    .hero-heading {
+      font-size: 3rem; /* Decrease font size for smaller screens */
+    }
+    .hero-subheading {
+      font-size: 1.5rem; /* Decrease font size for smaller screens */
+    }
+    .hero-button {
+      font-size: 0.8rem; /* Decrease font size for smaller screens */
+    }
+    .hero-content {
+      flex-direction: column;
+    }
+    .hero-text {
+      padding-right: 0; /* Remove padding */
+      margin-bottom: 20px;
+    }
+    .hero-image {
+      order: -1; /* Move the image above the text */
+    }
+  }
+  
+/* Media Queries */
+@media screen and (max-width: 768px) {
+ 
+
+  header h2 {
+    font-size: 1.2em; /* Decrease font size for smaller screens */
+  }
+   ul li {
+    font-size: 0.8em;
+   }
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-heading {
+    font-size: 2.5rem; /* Decrease font size for smaller screens */
+  }
+
+  .hero-subheading {
+    font-size: 1.2rem; /* Decrease font size for smaller screens */
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-button {
+    font-size: 1rem; /* Decrease font size for smaller screens */
+    padding: 0.5rem 1.5rem;
+  }
+
+  .hero-content {
+    padding: 20px;
+  }
+
+  .social-icons {
+    margin-bottom: 30px;
+  }
+
+  .social-icons a img {
+    width: 30px; /* Adjust the size as needed */
+    height: 30px;
+  }
+
+  .skills ul li {
+    flex: 0 0 40%; /* Two skills per row on smaller screens */
+  }
+
+  .works .project {
+    width: calc(100% - 40px);
+  }
+  section h2 {
+    font-size: 1.5em; /* Decrease font size for smaller screens */
+  }
+  .contact form input{
+    width: calc(100% - 20px);
+  
+  }
+  .contact form textarea{
+    width: calc(100% - 20px);
+  }
+  .contact form button{
+    width: calc(100% - 20px);
+  }
+  main {
+    justify-content: center;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <h2>Afnan afsal</h2>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-heading">Afnan afsal</h1>
+      <h2 class="hero-subheading">Web Developer</h2>
+      <div class="social-icons">
+
+        <a href="https://www.linkedin.com/in/afnanafsal"><img src="linkedin.svg" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/afnnafsal"><img src="instagram.svg" alt="Instagram"></a>
+        <a href="https://www.github.com/afnanafsal"><img src="github.svg" alt="Github"></a>
+      </div>
+      
+      <a href="#works" class="hero-button">View My Work</a>
+    </div>
+    <div class="hero-image">
+      <img src="profile.jpg" alt="Profile Image">
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>About Me</h2>
+  <p>Hello! I'm Afnan Afsal, a computer science student and passionate Software Engineer.</p>
+  <p>Career Interests: UI Design, Web Development</p>
+  <p>Exploring New Technologies: I love diving into new technologies like React, Flutter, and Bootstrap. Constantly updating my skills, I push the boundaries of what can be achieved.</p>
+  <p>Building Web and Mobile Applications: With a solid foundation in software engineering, I've developed engaging web and mobile applications. I had the opportunity to work on the Kochi Watermetro website, gaining valuable experience in delivering impactful solutions.</p>
+  <p>Embracing New Challenges: I'm always ready to embrace new challenges and seize opportunities for personal and professional growth.</p>
+  <p>Passion for Mentoring: I enjoy mentoring and teaching others who share my passion for software development. Let's journey together!</p>
+  <p>Let's Connect: Reach out to me via <a href="https://www.linkedin.com/in/afnan-afsal/" style="color: #4285f4;">LinkedIn</a> or email. Let's create something incredible together!</p>
+  <p>Love to Code: Coding is not just my profession; it's my love affair. I strive to make a positive impact through elegant solutions.</p>
+</section>
+
+<section id="skills" class="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li>HTML5</li>
+    <li>CSS3</li>
+    <li>JavaScript</li>
+    <li>React.js</li>
+    <li>Node.js</li>
+    <li>UI Design</li>
+    <li>Web Development</li>
+    <li>Bootstrap</li>
+    <li>Flutter</li>
+    <li>Python</li>
+    <li>Java</li>
+    <li>Database Management</li>
+    <!-- Add more skills as needed -->
+  </ul>
+</section>
+
+<section id="works" class="works">
+  <h2>Works</h2>
+
+  <div class="project">
+    <img src="ss.jpg" alt="Portfolio webpage">
+    <h3>Portfolio webpage</h3>
+    <p>Personal portfolio showcasing my skills and projects.</p>
+    <p>Oct 2023 - Ongoing</p>
+  </div>
+  <div class="project">
+    <img src="wmkochi.png" alt="Watermetro">
+    <h3>Watermetro</h3>
+    <p>Website for Kochi Watermetro project.</p>
+    <p>May 2023 - Ongoing</p>
+  </div>
+  <div class="project">
+    <img src="loop.png" alt="Beyond-The-Loop">
+    <h3>Beyond-The-Loop</h3>
+    <p>Beyond the Loop is a hackathon organized by the IEEE Student Branch at Ilahia College of Engineering and Technology</p>
+    <p>Feb 2024 - Ongoing</p>
+  </div>
+  
+  <div class="project">
+    <img src="alfa.png" alt="Alfabayanath">
+    <h3>Alfabayanath</h3>
+    <p>Website for Alfa Bayanath Company.</p>
+    <p>June 2023 - July 2023</p>
+  </div>
+  <div class="project">
+    <img src="certimate.png" alt="Certimate">
+    <h3>Certificate</h3>
+    <p>CertiMate: Easy certificate creation! Upload template, names, set coordinates for personalized design.</p>
+    <p>Nov 2023 - Dec 2023</p>
+  </div>
+  <div class="project">
+    <img src="axisum.png" alt="Axisum">
+    <h3>Axisum</h3>
+    <p>Article summarizer that transforms lengthy articles into clear and concise summaries.</p>
+    <p>Aug 2023 - Sept 2023</p>
+  </div>
+  <div class="project">
+    <img src="todo.png" alt="To do web app">
+    <h3>To do web app</h3>
+    <p>Simple todo list application built using HTML, CSS, and JavaScript.</p>
+    <p>March 2024</p>
+  </div>
+</section>
+
+
+<section id="contact" class="contact">
+  <h2>Contact Me</h2>
+  <form id="contact-form" method="post" action="">
+    <input type="text" id="name" name="name" placeholder="Your Name" required>
+    <input type="email" id="email" name="email" placeholder="Your Email" required>
+    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+
+<footer>
+  <p>&copy; 2024 Afnan Afsal</p>
+</footer>
+
+<script>
+  // Smooth Scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Reveal Animation
+  document.addEventListener('scroll', () => {
+    let elements = document.querySelectorAll('.animate');
+    elements.forEach(element => {
+      if (element.getBoundingClientRect().top < window.innerHeight - 100) {
+        element.classList.add('fade-in-up');
+      }
+    });
+  });
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    const subject = 'Collaboration Inquiry';
+    const body = `Hello,\n\nMy name is ${name} and my email is ${email}.\n\nMessage: ${message}\n\n`;
+    const mailtoLink = `mailto:afnnafsal@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+    // Optionally, you can add a confirmation message here
+    alert('Your email client should open with the message. Please ensure your email client is properly configured.');
+    // Clear form fields
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('message').value = '';
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha384-3bTYYZhpQZnWR9C+MMdyKk4Q4N2IWTWiIQhRREUOWwtn+ZpQgRrcYhKdZzJ4A4NB" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
